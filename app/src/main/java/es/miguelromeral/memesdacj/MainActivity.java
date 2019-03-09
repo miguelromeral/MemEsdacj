@@ -109,6 +109,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Concierto()).commit();
                 break;
+            case R.id.nav_slender:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Slender()).commit();
+                break;
+            case R.id.nav_skating:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Skating()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -132,6 +140,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new Fragment_Home()).commit();
                 break;
             case R.id.actionbar_about:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_About()).commit();
                 break;
             case R.id.actionbar_spotify:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -259,12 +269,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void downloadImageConcierto1(View view){
         downloadContent("concierto1.jpg");
     }
-    public void downloadImageConcierto2(View view){
-        downloadContent("concierto2.jpg");
+    public void downloadImageConcierto2(View view){ downloadContent("concierto2.jpg");
     }
     public void openSpotify(View view){
         Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/5xTeCCy5GCWCnZbcQnJooF?si=mvqfAECxTk-ihGCWWQk12A"));
         startActivity(myIntent);
+    }
+    public void downloadImageAbout(View view){ downloadContent("about.jpg"); }
+    public void watchVideoSlender(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.slender);
+        startActivity(i);
+    }
+    public void watchVideoSkate1(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate1);
+        startActivity(i);
+    }
+    public void watchVideoSkate2(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate2);
+        startActivity(i);
     }
 
 

@@ -49,11 +49,7 @@
     <string name="navigation_messenger">Messenger League</string>
     <string name="navigation_hockey">Hockey</string>
     <string name="navigation_concierto">Concierto</string>
-    <string name="navigation_4_">4</string>
-    <string name="navigation_5_">5</string>
-    <string name="navigation_6_">6</string>
-    <string name="navigation_7_">7</string>
-    <string name="navigation_8_">8</string>
-    <string name="navigation_9_">9</string>
+    <string name="navigation_slender">Slender Man</string>
+    <string name="navigation_skating">Skating</string>
 
 </resources>
