@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="#cbf1f1">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,25 +23,24 @@
                 android:layout_height="20dp" />
 
             <ImageView
-                android:id="@+id/iv_about"
+                android:id="@+id/iv_messenger"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/bDownload_Home"
+                android:id="@+id/bDownload_Messenger"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/side_nav_bar"
                 android:drawableLeft="@android:drawable/stat_sys_download"
-                android:onClick="downloadImageHome"
+                android:onClick="downloadImageMessange"
                 android:text="@string/btDownload_image"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/debug"
+                android:text="@string/tMessenger1"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -58,6 +58,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
+
+            <Button
+                android:id="@+id/bWatch_Messenger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/side_nav_bar"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:onClick="watchVideoMessenger"
+                android:text="@string/btWatch_video"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>

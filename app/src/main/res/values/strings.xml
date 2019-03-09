@@ -8,6 +8,9 @@
     <!-- Menú Inicio -->
     <string name="tInicio1">Introducción Esteban</string>
 
+    <!-- Menú Messenger -->
+    <string name="tMessenger1">Messenger League</string>
+
 
 
 
@@ -16,10 +19,15 @@
     <string name="tDownload_fail">Ha ocurrido un problema al guardar la imagen.</string>
     <string name="wWritePermission">Esta aplicación necesita permisos de almacenamiento externo si desea guardar alguno de sus contenidos.</string>
     <string name="wBirthday">¡Muchísimas Felicidades! Hoy, 24 de marzo estás de celebración un año más. ¡Disfruta de lo que resta de día! :)</string>
+    <string name="wVideoLoadingTitle">El vídeo se está cargando. Esto puede tardar su tiempo.</string>
+    <string name="wVideoLoading">Estamos trabajando en ello...</string>
     <string name="tOk">Vale</string>
 
     <!-- Botones -->
     <string name="btDownload_image">Guardar imagen</string>
+    <string name="btWatch_video">Ver vídeo</string>
+    <string name="btDownload_video">Descargar vídeo</string>
+    <string name="btOpen_Spotify">Escuchar playlist</string>
 
 
 
@@ -31,15 +39,16 @@
     <!-- Menú tres puntitos -->
     <string name="action_go_home">Volver al inicio</string>
     <string name="action_about">Acerca de</string>
+    <string name="action_spotify">Spotify</string>
 
     <!-- Menú lateral -->
     <string name="navigation_title">Esteban</string>
     <string name="navigation_subtitle">\@esdacj</string>
 
     <string name="navigation_home">Inicio</string>
-    <string name="navigation_1_">Tab 1</string>
-    <string name="navigation_2_">Tab 2</string>
-    <string name="navigation_3_">Tab 3</string>
+    <string name="navigation_messenger">Messenger League</string>
+    <string name="navigation_hockey">Hockey</string>
+    <string name="navigation_concierto">Concierto</string>
     <string name="navigation_4_">4</string>
     <string name="navigation_5_">5</string>
     <string name="navigation_6_">6</string>

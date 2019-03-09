@@ -2,6 +2,7 @@ package es.miguelromeral.memesdacj;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,9 +50,9 @@ public class VideoActivity extends AppCompatActivity {
         // create a progress bar while the video file is loading
         progressDialog = new ProgressDialog(VideoActivity.this);
         // set a title for the progress bar
-        progressDialog.setTitle("JavaCodeGeeks Android Video View Example");
+        progressDialog.setTitle(getResources().getString(R.string.wVideoLoadingTitle));
         // set a message for the progress bar
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage(getResources().getString(R.string.wVideoLoading));
         //set the progress bar not cancelable on users' touch
         progressDialog.setCancelable(false);
         // show the progress bar

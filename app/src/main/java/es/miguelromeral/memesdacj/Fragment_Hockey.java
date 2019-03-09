@@ -9,24 +9,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-public class Fragment_Home extends Fragment {
+public class Fragment_Hockey extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Set title bar
-        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.app_name));
 
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        // Set title bar
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.navigation_hockey));
+
+        return inflater.inflate(R.layout.fragment_hockey, container, false);
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ImageView im = (ImageView) getActivity().findViewById(R.id.iv_hockey1);
+        im.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.hockey1));
 
-        ImageView im = (ImageView) getActivity().findViewById(R.id.iv_about);
-        im.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.home));
+        ImageView im2 = (ImageView) getActivity().findViewById(R.id.iv_hockey2);
+        im2.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.hockey2));
 
     }
 }

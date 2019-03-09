@@ -8,13 +8,17 @@
                 android:id="@+id/nav_home"
                 android:title="@string/navigation_home" />
             <item
-                android:id="@+id/nav_1_"
+                android:id="@+id/nav_messenger"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_1_" />
+                android:title="@string/navigation_messenger" />
             <item
-                android:id="@+id/nav_2_"
+                android:id="@+id/nav_hockey"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_2_" />
+                android:title="@string/navigation_hockey" />
+            <item
+                android:id="@+id/nav_concierto"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_concierto" />
         </group>
 
 </menu>

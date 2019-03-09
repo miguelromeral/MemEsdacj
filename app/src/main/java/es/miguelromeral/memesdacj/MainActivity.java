@@ -3,6 +3,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -29,13 +30,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -76,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         if(new SimpleDateFormat("MM.dd").format(new Date()).equals("03.24")){
-
             new AlertDialog.Builder(this)
                     .setCancelable(false)
                     .setPositiveButton(R.string.tOk, new DialogInterface.OnClickListener() {
@@ -100,13 +97,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Home()).commit();
                 break;
-            case R.id.nav_1_:
+            case R.id.nav_messenger:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Fragment_1_()).commit();
+                        new Fragment_Messenger()).commit();
                 break;
-            case R.id.nav_2_:
+            case R.id.nav_hockey:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Fragment_2_()).commit();
+                        new Fragment_Hockey()).commit();
+                break;
+            case R.id.nav_concierto:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Concierto()).commit();
                 break;
         }
 
@@ -127,8 +128,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch(item.getItemId()){
             case R.id.actionbar_go_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Home()).commit();
                 break;
             case R.id.actionbar_about:
+                break;
+            case R.id.actionbar_spotify:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Spotify()).commit();
                 break;
         }
 
@@ -235,8 +242,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void downloadImageHome(View view){
         downloadContent("home.jpg");
     }
-
-
+    public void watchVideoMessenger(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.messengerleague);
+        startActivity(i);
+    }
+    public void downloadImageMessange(View view){
+        downloadContent("messengerleague.jpg");
+    }
+    public void downloadImageHockey1(View view){
+        downloadContent("hockey1.jpg");
+    }
+    public void downloadImageHockey2(View view){
+        downloadContent("hockey2.jpg");
+    }
+    public void downloadImageConcierto1(View view){
+        downloadContent("concierto1.jpg");
+    }
+    public void downloadImageConcierto2(View view){
+        downloadContent("concierto2.jpg");
+    }
+    public void openSpotify(View view){
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/5xTeCCy5GCWCnZbcQnJooF?si=mvqfAECxTk-ihGCWWQk12A"));
+        startActivity(myIntent);
+    }
 
 
     /************************ DOWNLOAD FILES ******************************/
@@ -268,24 +297,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .show();
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, MainActivity.this);
     }
-
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         //Download the file once permission is granted
         new DownloadFile().execute(url);
     }
-
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         Log.d(TAG, "Permission has been denied");
     }
-
     /**
      * Async Task to download file from URL
      */

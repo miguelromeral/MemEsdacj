@@ -6,13 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
-public class Fragment_2_ extends Fragment {
+public class Fragment_Spotify extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_2_, container, false);
+        // Set title bar
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.action_spotify));
+        return inflater.inflate(R.layout.fragment_spotify, container, false);
     }
 }
