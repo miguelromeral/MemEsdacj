@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Esteban</string>
+
+
+    <string name="debug">DEBUG - TO DO</string>
+
+
+    <!-- Menú Inicio -->
+    <string name="tInicio1">Introducción Esteban</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Menú tres puntitos -->
+    <string name="action_go_home">Volver al inicio</string>
+    <string name="action_about">Acerca de</string>
+
+    <!-- Menú lateral -->
+    <string name="navigation_title">Esteban</string>
+    <string name="navigation_subtitle">\@esdacj</string>
+
+    <string name="navigation_home">Inicio</string>
+    <string name="navigation_1_">Tab 1</string>
+    <string name="navigation_2_">Tab 2</string>
+    <string name="navigation_3_">Tab 3</string>
+    <string name="navigation_4_">4</string>
+    <string name="navigation_5_">5</string>
+    <string name="navigation_6_">6</string>
+    <string name="navigation_7_">7</string>
+    <string name="navigation_8_">8</string>
+    <string name="navigation_9_">9</string>
+
+</resources>
