@@ -1,11 +1,19 @@
 package es.miguelromeral.memesdacj;
-import android.content.Context;
+import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,13 +22,33 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import es.miguelromeral.memesdacj.utilities.CheckForSDCard;
+import pub.devrel.easypermissions.EasyPermissions;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+    EasyPermissions.PermissionCallbacks {
+
+    private static final int WRITE_REQUEST_CODE = 300;
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private String url;
     private DrawerLayout drawer;
 
     @Override
@@ -42,11 +70,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new Fragment_1_()).commit();
-            navigationView.setCheckedItem(R.id.nav_1_);
+                    new Fragment_Home()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
         }
 
 
+        if(new SimpleDateFormat("MM.dd").format(new Date()).equals("03.24")){
+
+            new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.tOk, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    })
+                    .setMessage(R.string.wBirthday)
+                    .show();
+        }
 
     }
 
@@ -106,8 +145,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
@@ -149,7 +186,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    public Drawable resizeImage(int imageResource) {// R.drawable.large_image
+    public Drawable resizeImage(int imageResource) {
+        // R.drawable.large_image
         // Get device dimensions
         Display display = getWindowManager().getDefaultDisplay();
         double deviceWidth = display.getWidth();
@@ -190,4 +228,169 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return resizedBitmap;
     }
+
+
+    /************************ BUTTON ACTIONS ******************************/
+
+    public void downloadImageHome(View view){
+        downloadContent("home.jpg");
+    }
+
+
+
+
+    /************************ DOWNLOAD FILES ******************************/
+
+    public void downloadContent(String resource){
+        //Check if SD card is present or not
+        if (CheckForSDCard.isSDCardPresent()) {
+
+            //check if app has permission to write to the external storage.
+            if (EasyPermissions.hasPermissions(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                //Get the URL entered
+                url = resource;
+                new DownloadFile().execute(url);
+
+            } else {
+                //If permission is not present request for the same.
+                EasyPermissions.requestPermissions(MainActivity.this, getString(R.string.wWritePermission), WRITE_REQUEST_CODE, Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
+
+
+        } else {
+            new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.tOk, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    })
+                    .setMessage(R.string.tDownload_fail)
+                    .show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, MainActivity.this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        //Download the file once permission is granted
+        new DownloadFile().execute(url);
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        Log.d(TAG, "Permission has been denied");
+    }
+
+    /**
+     * Async Task to download file from URL
+     */
+    private class DownloadFile extends AsyncTask<String, String, String> {
+
+        private ProgressDialog progressDialog;
+        private String fileName;
+        private String folder;
+        private boolean isDownloaded;
+
+        /**
+         * Before starting background thread
+         * Show Progress Bar Dialog
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            this.progressDialog = new ProgressDialog(MainActivity.this);
+            this.progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            this.progressDialog.setCancelable(false);
+            this.progressDialog.show();
+        }
+
+        /**
+         * Downloading file in background thread
+         */
+        @Override
+        protected String doInBackground(String... f_url) {
+            int count;
+            try {
+                String url = f_url[0];
+
+
+                AssetManager assManager = getApplicationContext().getAssets();
+                InputStream input = assManager.open(url);
+
+                AssetFileDescriptor fd = getAssets().openFd(url);
+                int lengthOfFile = (int) fd.getLength();
+
+                //Extract file name from URL
+                fileName = f_url[0].substring(f_url[0].lastIndexOf('/') + 1, f_url[0].length());
+
+
+                //External directory path to save file
+                folder = Environment.getExternalStorageDirectory() + File.separator + "Esteban/";
+
+                //Create androiddeft folder if it does not exist
+                File directory = new File(folder);
+
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
+                // Output stream to write file
+                OutputStream output = new FileOutputStream(folder + fileName);
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress("" + (int) ((total * 100) / lengthOfFile));
+                    Log.d(TAG, "Progress: " + (int) ((total * 100) / lengthOfFile));
+
+                    // writing data to file
+                    output.write(data, 0, count);
+                }
+
+                // flushing output
+                output.flush();
+
+                // closing streams
+                output.close();
+                input.close();
+                return "Downloaded at: " + folder + fileName;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Error: ", e.getMessage());
+            }
+
+            return "Something went wrong";
+        }
+
+        /**
+         * Updating progress bar
+         */
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            progressDialog.setProgress(Integer.parseInt(progress[0]));
+        }
+
+
+        @Override
+        protected void onPostExecute(String message) {
+            // dismiss the dialog after the file was downloaded
+            this.progressDialog.dismiss();
+
+            // Display File path after downloading
+            Toast.makeText(getApplicationContext(),
+                    message, Toast.LENGTH_LONG).show();
+        }
+    }
+
 }

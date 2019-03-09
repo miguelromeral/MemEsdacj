@@ -1,7 +1,5 @@
 package es.miguelromeral.memesdacj;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-
-import es.miguelromeral.memesdacj.MainActivity;
-import es.miguelromeral.memesdacj.R;
 
 
 public class Fragment_Home extends Fragment {
@@ -34,13 +28,7 @@ public class Fragment_Home extends Fragment {
 
 
         ImageView im = (ImageView) getActivity().findViewById(R.id.iv_about);
+        im.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.home));
 
-   /*     im.setImageBitmap(MainActivity.decodeSampledBitmapFromResource(
-                getResources(), R.drawable.about, im.getWidth(), im.getHeight()));
-
-*/
-        im.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.about));
-
-  //      im.setImageResource(R.drawable.dibujos);
     }
 }

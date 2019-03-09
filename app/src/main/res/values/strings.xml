@@ -10,6 +10,19 @@
 
 
 
+
+    <!-- Utilities -->
+    <string name="tDownload_success">Se ha descargado la imagen con éxito.</string>
+    <string name="tDownload_fail">Ha ocurrido un problema al guardar la imagen.</string>
+    <string name="wWritePermission">Esta aplicación necesita permisos de almacenamiento externo si desea guardar alguno de sus contenidos.</string>
+    <string name="wBirthday">¡Muchísimas Felicidades! Hoy, 24 de marzo estás de celebración un año más. ¡Disfruta de lo que resta de día! :)</string>
+    <string name="tOk">Vale</string>
+
+    <!-- Botones -->
+    <string name="btDownload_image">Guardar imagen</string>
+
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
