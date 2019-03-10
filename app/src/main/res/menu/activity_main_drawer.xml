@@ -27,6 +27,26 @@
                 android:id="@+id/nav_skating"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_skating" />
+            <item
+                android:id="@+id/nav_conociendote"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_conociendote" />
+            <item
+                android:id="@+id/nav_harlemshake"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_harlemshake" />
+            <item
+                android:id="@+id/nav_futuro"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_futuro" />
+            <item
+                android:id="@+id/nav_tenis"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_tenis" />
+            <item
+                android:id="@+id/nav_favor"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_favor" />
         </group>
 
 </menu>

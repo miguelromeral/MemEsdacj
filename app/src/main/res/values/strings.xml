@@ -21,6 +21,8 @@
     <string name="wBirthday">¡Muchísimas Felicidades! Hoy, 24 de marzo estás de celebración un año más. ¡Disfruta de lo que resta de día! :)</string>
     <string name="wVideoLoadingTitle">El vídeo se está cargando. Esto puede tardar su tiempo.</string>
     <string name="wVideoLoading">Estamos trabajando en ello...</string>
+    <string name="wFailDownload">No se ha podido guardar la imagen.</string>
+    <string name="wEspontaneo">ElCansi: ¡Espontáneooooooooo!</string>
     <string name="tOk">Vale</string>
 
     <!-- Botones -->
@@ -51,5 +53,11 @@
     <string name="navigation_concierto">Concierto</string>
     <string name="navigation_slender">Slender Man</string>
     <string name="navigation_skating">Skating</string>
+    <string name="navigation_conociendote">Conociéndote</string>
+    <string name="navigation_harlemshake">Harlem Shake</string>
+    <string name="navigation_futuro">El Futuro</string>
+    <string name="navigation_tenis">Tenis</string>
+    <string name="navigation_favor">#NecesitoQueMeHagasUnFavor</string>
+    <string name="navigation_tomasfalsas">Tomas Falsas</string>
 
 </resources>

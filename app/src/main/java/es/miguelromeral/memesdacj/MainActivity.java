@@ -117,6 +117,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Skating()).commit();
                 break;
+            case R.id.nav_conociendote:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Conociendote()).commit();
+                break;
+            case R.id.nav_harlemshake:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Harlemshake()).commit();
+                break;
+            case R.id.nav_futuro:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Futuro()).commit();
+                break;
+            case R.id.nav_tenis:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Tenis()).commit();
+                break;
+            case R.id.nav_favor:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Favor()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -257,22 +277,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.messengerleague);
         startActivity(i);
     }
-    public void downloadImageMessange(View view){
-        downloadContent("messengerleague.jpg");
-    }
-    public void downloadImageHockey1(View view){
-        downloadContent("hockey1.jpg");
-    }
-    public void downloadImageHockey2(View view){
-        downloadContent("hockey2.jpg");
-    }
-    public void downloadImageConcierto1(View view){
-        downloadContent("concierto1.jpg");
-    }
-    public void downloadImageConcierto2(View view){ downloadContent("concierto2.jpg");
-    }
+    public void downloadImageMessange(View view){ downloadContent("messengerleague.jpg"); }
+    public void downloadImageHockey1(View view){ downloadContent("hockey1.jpg"); }
+    public void downloadImageHockey2(View view){ downloadContent("hockey2.jpg"); }
+    public void downloadImageConcierto1(View view){ downloadContent("concierto1.jpg"); }
+    public void downloadImageConcierto2(View view){ downloadContent("concierto2.jpg"); }
     public void openSpotify(View view){
-        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/5xTeCCy5GCWCnZbcQnJooF?si=mvqfAECxTk-ihGCWWQk12A"));
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/7EGfF9n2rlHq0Ymh7d6QWM?si=uQussHsgRvihBVdKx3NksA"));
         startActivity(myIntent);
     }
     public void downloadImageAbout(View view){ downloadContent("about.jpg"); }
@@ -289,6 +300,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void watchVideoSkate2(View view){
         Intent i = new Intent(this, VideoActivity.class);
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate2);
+        startActivity(i);
+    }
+    public void downloadImageConociendote1(View view){ downloadContent("conociendonos1.jpg"); }
+    public void downloadImageConociendote2(View view){ downloadContent("conociendonos2.jpg"); }
+    public void downloadImageConociendote3(View view){ downloadContent("conociendonos3.jpg"); }
+    public void downloadImageConociendote4(View view){ downloadContent("conociendonos4.jpg"); }
+    public void watchVideoHarlemshake(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.harlemshake);
+        startActivity(i);
+    }
+    public void downloadImageFuturo(View view){ downloadContent("futuro.jpg"); }
+    public void downloadImageTenis1(View view){ downloadContent("tenis1.jpg"); }
+    public void downloadImageTenis2(View view){ downloadContent("tenis2.jpg"); }
+    public void watchVideoFavor1(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.favor1);
+        startActivity(i);
+    }
+    public void goTomasFalsas(View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new Fragment_TomasFalsas()).commit();
+    }
+    public void watchVideoFavor2(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.favor2);
         startActivity(i);
     }
 
@@ -420,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.e("Error: ", e.getMessage());
             }
 
-            return "Something went wrong";
+            return getResources().getString(R.string.wFailDownload);
         }
 
         /**
