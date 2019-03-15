@@ -8,6 +8,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/actionbar_howto"
+        android:orderInCategory="150"
+        android:title="@string/tInstruccionesTitulo"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/actionbar_about"
         android:orderInCategory="200"
         android:title="@string/action_about"

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 public class Fragment_Messenger extends Fragment {
 
+    public static final String IMAGE_MESSENGER = "messengerleague.jpg";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 public class Fragment_Concierto extends Fragment {
 
+    public static final String IMAGE_CONCIERTO_1 = "concierto1.jpg";
+    public static final String IMAGE_CONCIERTO_2 = "concierto2.jpg";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

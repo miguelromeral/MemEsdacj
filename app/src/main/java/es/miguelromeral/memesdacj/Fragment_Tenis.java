@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 public class Fragment_Tenis extends Fragment {
 
+    public static final String IMAGE_TENIS_1 = "tenis1.jpg";
+    public static final String IMAGE_TENIS_2 = "tenis2.jpg";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

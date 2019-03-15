@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 public class Fragment_Home extends Fragment {
 
+    public static final String IMAGE_HOME = "home.jpg";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

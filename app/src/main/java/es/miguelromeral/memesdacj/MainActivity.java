@@ -2,8 +2,10 @@ package es.miguelromeral.memesdacj;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -15,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -39,6 +42,7 @@ import java.util.Date;
 import java.util.List;
 
 import es.miguelromeral.memesdacj.utilities.CheckForSDCard;
+import es.miguelromeral.memesdacj.utilities.UrlFinder;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -46,8 +50,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static final int WRITE_REQUEST_CODE = 300;
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String PREFERENCES_MAIN = "Preferencias";
+    private static final String PREFERENCES_REANUDADO = "Preferencias_reanudado";
     private String url;
     private DrawerLayout drawer;
+    // Indica si es la primera vez que se ejecuta la aplicación
+    private boolean reanudado;
+
+
+    private int imagenPulsada = 0;
+    private static int MAX_CLICKS = 5;
+    private static int WARNING_CLICKS = 2;
+    private String imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +98,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .show();
         }
 
+        // Recuperamos los valores de la sesión
+        try{
+            SharedPreferences sharedPreferences = getSharedPreferences(PREFERENCES_MAIN, Context.MODE_PRIVATE);
+            reanudado = sharedPreferences.getBoolean(PREFERENCES_REANUDADO, false);
+        }catch(Exception e){
+            reanudado = false;
+        }
+
+        // Si es la primera vez que se ejecuta
+        if(!reanudado){
+            mostrarFelicitacion();
+            mostrarInstrucciones();
+        }
+    }
+
+    private void mostrarFelicitacion(){
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle(R.string.tFelicitacionTitulo)
+                .setPositiveButton(R.string.tUnderstood, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                })
+                .setMessage(R.string.tFelicitacionCuerpo)
+                .show();
+    }
+
+
+    private void mostrarInstrucciones(){
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle(R.string.tInstruccionesTitulo)
+                .setPositiveButton(R.string.tUnderstood, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                })
+                .setMessage(R.string.tInstruccionesCuerpo)
+                .show();
+    }
+
+    // Cuando se pare la ejecución, guardamos las preferencias del main.
+    @Override
+    public void onStop(){
+        super.onStop();
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFERENCES_MAIN, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(PREFERENCES_REANUDADO, true);
+        editor.commit();
     }
 
     public void setActionBarTitle(String title) {
@@ -137,10 +199,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Favor()).commit();
                 break;
+            case R.id.nav_eso:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Eso()).commit();
+                break;
+            case R.id.nav_bachillerato:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Bachillerato()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void actionImageClicks(String imagenNueva){
+        if(imagen == imagenNueva){
+            if (imagenPulsada == MAX_CLICKS) {
+
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(UrlFinder.GetUrlVideo(imagenNueva)));
+                startActivity(myIntent);
+
+                imagenPulsada = 0;
+                return;
+            }
+            if(imagenPulsada == WARNING_CLICKS)
+                Toast.makeText(this, R.string.tKeepClicking, Toast.LENGTH_LONG).show();
+
+            imagenPulsada++;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    imagenPulsada = 0;
+                }
+            }, 3000);
+        }else{
+            imagen = imagenNueva;
+            imagenPulsada = 1;
+        }
     }
 
 
@@ -166,6 +264,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.actionbar_spotify:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Spotify()).commit();
+                break;
+            case R.id.actionbar_howto:
+                mostrarInstrucciones();
                 break;
         }
 
@@ -270,23 +371,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /************************ BUTTON ACTIONS ******************************/
 
     public void downloadImageHome(View view){
-        downloadContent("home.jpg");
+        downloadContent(Fragment_Home.IMAGE_HOME);
     }
-    public void watchVideoMessenger(View view){
-        Intent i = new Intent(this, VideoActivity.class);
-        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.messengerleague);
-        startActivity(i);
-    }
-    public void downloadImageMessange(View view){ downloadContent("messengerleague.jpg"); }
-    public void downloadImageHockey1(View view){ downloadContent("hockey1.jpg"); }
-    public void downloadImageHockey2(View view){ downloadContent("hockey2.jpg"); }
-    public void downloadImageConcierto1(View view){ downloadContent("concierto1.jpg"); }
-    public void downloadImageConcierto2(View view){ downloadContent("concierto2.jpg"); }
+    public void downloadImageMessange(View view){ downloadContent(Fragment_Messenger.IMAGE_MESSENGER); }
+    public void downloadImageHockey1(View view){ downloadContent(Fragment_Hockey.IMAGE_HOCKEY_1); }
+    public void downloadImageHockey2(View view){ downloadContent(Fragment_Hockey.IMAGE_HOCKEY_2); }
+    public void downloadImageConcierto1(View view){ downloadContent(Fragment_Concierto.IMAGE_CONCIERTO_1); }
+    public void downloadImageConcierto2(View view){ downloadContent(Fragment_Concierto.IMAGE_CONCIERTO_2); }
+    public void downloadImageEso1(View view){ downloadContent(Fragment_Eso.IMAGE_ESO_1); }
+    public void downloadImageEso2(View view){ downloadContent(Fragment_Eso.IMAGE_ESO_2); }
+    public void downloadImageEso3(View view){ downloadContent(Fragment_Eso.IMAGE_ESO_3); }
+    public void downloadImageEso4(View view){ downloadContent(Fragment_Eso.IMAGE_ESO_4); }
+    public void downloadImageBachillerato1(View view){ downloadContent(Fragment_Bachillerato.IMAGE_BACHILLERATO_1); }
+    public void downloadImageBachillerato2(View view){ downloadContent(Fragment_Bachillerato.IMAGE_BACHILLERATO_2); }
+    public void downloadImageBachillerato3(View view){ downloadContent(Fragment_Bachillerato.IMAGE_BACHILLERATO_3); }
+    public void downloadImageBachillerato4(View view){ downloadContent(Fragment_Bachillerato.IMAGE_BACHILLERATO_4); }
+    public void downloadImageBachillerato5(View view){ downloadContent(Fragment_Bachillerato.IMAGE_BACHILLERATO_5); }
+    public void downloadImageConociendote1(View view){ downloadContent(Fragment_Conociendote.IMAGE_CONOCIENDOTE_1); }
+    public void downloadImageConociendote2(View view){ downloadContent(Fragment_Conociendote.IMAGE_CONOCIENDOTE_2); }
+    public void downloadImageConociendote3(View view){ downloadContent(Fragment_Conociendote.IMAGE_CONOCIENDOTE_3); }
+    public void downloadImageConociendote4(View view){ downloadContent(Fragment_Conociendote.IMAGE_CONOCIENDOTE_4); }
+    public void downloadImageFuturo(View view){ downloadContent(Fragment_Futuro.IMAGE_FUTURO); }
+    public void downloadImageTenis1(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
+    public void downloadImageTenis2(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
     public void openSpotify(View view){
         Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/7EGfF9n2rlHq0Ymh7d6QWM?si=uQussHsgRvihBVdKx3NksA"));
         startActivity(myIntent);
     }
-    public void downloadImageAbout(View view){ downloadContent("about.jpg"); }
+    public void downloadImageAbout(View view){ downloadContent(Fragment_About.IMAGE_ABOUT); }
     public void watchVideoSlender(View view){
         Intent i = new Intent(this, VideoActivity.class);
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.slender);
@@ -302,18 +414,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate2);
         startActivity(i);
     }
-    public void downloadImageConociendote1(View view){ downloadContent("conociendonos1.jpg"); }
-    public void downloadImageConociendote2(View view){ downloadContent("conociendonos2.jpg"); }
-    public void downloadImageConociendote3(View view){ downloadContent("conociendonos3.jpg"); }
-    public void downloadImageConociendote4(View view){ downloadContent("conociendonos4.jpg"); }
     public void watchVideoHarlemshake(View view){
         Intent i = new Intent(this, VideoActivity.class);
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.harlemshake);
         startActivity(i);
     }
-    public void downloadImageFuturo(View view){ downloadContent("futuro.jpg"); }
-    public void downloadImageTenis1(View view){ downloadContent("tenis1.jpg"); }
-    public void downloadImageTenis2(View view){ downloadContent("tenis2.jpg"); }
     public void watchVideoFavor1(View view){
         Intent i = new Intent(this, VideoActivity.class);
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.favor1);
@@ -326,6 +431,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void watchVideoFavor2(View view){
         Intent i = new Intent(this, VideoActivity.class);
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.favor2);
+        startActivity(i);
+    }
+    public void watchVideoMessenger(View view){
+        Intent i = new Intent(this, VideoActivity.class);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.messengerleague);
         startActivity(i);
     }
 

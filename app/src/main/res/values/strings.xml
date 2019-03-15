@@ -12,6 +12,21 @@
     <string name="tMessenger1">Messenger League</string>
 
 
+    <string name="tFelicitacionTitulo">Título de la felicitación</string>
+    <string name="tFelicitacionCuerpo">Cuerpo de la felicitación</string>
+
+
+
+
+
+    <string name="tInstruccionesTitulo">Uso de la aplicación</string>
+    <string name="tInstruccionesCuerpo">Instrucciones de la aplicación</string>
+
+
+    <string name="tKeepClicking">Sigue pulsando la imagen ;)</string>
+
+
+
 
 
     <!-- Utilities -->
@@ -24,6 +39,7 @@
     <string name="wFailDownload">No se ha podido guardar la imagen.</string>
     <string name="wEspontaneo">ElCansi: ¡Espontáneooooooooo!</string>
     <string name="tOk">Vale</string>
+    <string name="tUnderstood">Entendido</string>
 
     <!-- Botones -->
     <string name="btDownload_image">Guardar imagen</string>
@@ -36,12 +52,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
 
     <!-- Menú tres puntitos -->
     <string name="action_go_home">Volver al inicio</string>
     <string name="action_about">Acerca de</string>
     <string name="action_spotify">Spotify</string>
+    <string name="action_settings">Settings</string>
 
     <!-- Menú lateral -->
     <string name="navigation_title">Esteban</string>
@@ -59,5 +75,7 @@
     <string name="navigation_tenis">Tenis</string>
     <string name="navigation_favor">#NecesitoQueMeHagasUnFavor</string>
     <string name="navigation_tomasfalsas">Tomas Falsas</string>
+    <string name="navigation_eso">Primeros años como compañeros</string>
+    <string name="navigation_bachillerato">Final de instituto</string>
 
 </resources>
