@@ -24,4 +24,9 @@
         android:orderInCategory="300"
         android:title="@string/action_spotify"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/actionbar_github"
+        android:orderInCategory="400"
+        android:title="@string/action_github"
+        app:showAsAction="never" />
 </menu>

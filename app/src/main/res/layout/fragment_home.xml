@@ -22,14 +22,15 @@
                 android:layout_height="20dp" />
 
             <ImageView
-                android:id="@+id/iv_about"
+                android:id="@+id/iv_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageHome"/>
 
             <Button
                 android:id="@+id/bDownload_Home"

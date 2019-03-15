@@ -29,7 +29,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageTenis1"/>
 
             <Button
                 android:id="@+id/bDownload_Tenis1"
@@ -65,7 +66,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageTenis2"/>
 
             <Button
                 android:id="@+id/bDownload_Tenis2"

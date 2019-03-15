@@ -27,7 +27,7 @@ public class Fragment_Home extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        ImageView im = (ImageView) getActivity().findViewById(R.id.iv_about);
+        ImageView im = (ImageView) getActivity().findViewById(R.id.iv_home);
         im.setImageDrawable(((MainActivity) getActivity()).resizeImage(R.drawable.home));
 
     }

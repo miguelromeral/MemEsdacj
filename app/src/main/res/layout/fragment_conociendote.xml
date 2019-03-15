@@ -29,7 +29,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageConociendote1"/>
 
             <Button
                 android:id="@+id/bDownload_Conociendote1"
@@ -66,7 +67,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageConociendote2"/>
 
             <Button
                 android:id="@+id/bDownload_Conociendote2"
@@ -91,7 +93,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageConociendote3"/>
 
             <Button
                 android:id="@+id/bDownload_Conociendote3"
@@ -116,7 +119,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageConociendote4"/>
 
             <Button
                 android:id="@+id/bDownload_Conociendote4"

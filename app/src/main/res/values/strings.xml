@@ -26,6 +26,9 @@
     <string name="tKeepClicking">Sigue pulsando la imagen ;)</string>
 
 
+    <string name="tVerGitHub">Ver código en GitHub</string>
+
+
 
 
 
@@ -46,6 +49,7 @@
     <string name="btWatch_video">Ver vídeo</string>
     <string name="btDownload_video">Descargar vídeo</string>
     <string name="btOpen_Spotify">Escuchar playlist</string>
+    <string name="btOpen_GitHub">Ver el código en GitHub</string>
 
 
 
@@ -58,11 +62,11 @@
     <string name="action_about">Acerca de</string>
     <string name="action_spotify">Spotify</string>
     <string name="action_settings">Settings</string>
+    <string name="action_github">Código en GitHub</string>
 
     <!-- Menú lateral -->
     <string name="navigation_title">Esteban</string>
     <string name="navigation_subtitle">\@esdacj</string>
-
     <string name="navigation_home">Inicio</string>
     <string name="navigation_messenger">Messenger League</string>
     <string name="navigation_hockey">Hockey</string>
@@ -77,5 +81,7 @@
     <string name="navigation_tomasfalsas">Tomas Falsas</string>
     <string name="navigation_eso">Primeros años como compañeros</string>
     <string name="navigation_bachillerato">Final de instituto</string>
+    <string name="navigation_azuqueca">Azuqueca de Henares</string>
+    <string name="navigation_denisa">Denisa</string>
 
 </resources>

@@ -29,7 +29,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clickImageFuturo"/>
 
             <Button
                 android:id="@+id/bDownload_Futuro"

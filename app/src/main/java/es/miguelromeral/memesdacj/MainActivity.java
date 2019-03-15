@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private int imagenPulsada = 0;
-    private static int MAX_CLICKS = 5;
+    private static int MAX_CLICKS = 6;
     private static int WARNING_CLICKS = 2;
     private String imagen;
 
@@ -207,6 +207,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Fragment_Bachillerato()).commit();
                 break;
+            case R.id.nav_azuqueca:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Azuqueca()).commit();
+                break;
+            case R.id.nav_denisa:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_Denisa()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -218,10 +226,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(imagen == imagenNueva){
             if (imagenPulsada == MAX_CLICKS) {
 
-                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(UrlFinder.GetUrlVideo(imagenNueva)));
-                startActivity(myIntent);
+                String url = UrlFinder.GetUrlVideo(imagenNueva);
+                if(!url.isEmpty()) {
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(imagenNueva));
+                    startActivity(myIntent);
 
-                imagenPulsada = 0;
+                    imagenPulsada = 0;
+                }
                 return;
             }
             if(imagenPulsada == WARNING_CLICKS)
@@ -267,6 +278,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.actionbar_howto:
                 mostrarInstrucciones();
+                break;
+            case R.id.actionbar_github:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_GitHub()).commit();
                 break;
         }
 
@@ -370,6 +385,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /************************ BUTTON ACTIONS ******************************/
 
+    public void downloadImageAzuqueca1(View view){ downloadContent(Fragment_Azuqueca.IMAGE_AZUQUECA_1); }
+    public void downloadImageAzuqueca2(View view){ downloadContent(Fragment_Azuqueca.IMAGE_AZUQUECA_2); }
+    public void downloadImageAzuqueca3(View view){ downloadContent(Fragment_Azuqueca.IMAGE_AZUQUECA_3); }
+    public void downloadImageDenisa1(View view){ downloadContent(Fragment_Denisa.IMAGE_DENISA_1); }
+    public void downloadImageDenisa2(View view){ downloadContent(Fragment_Denisa.IMAGE_DENISA_2); }
     public void downloadImageHome(View view){
         downloadContent(Fragment_Home.IMAGE_HOME);
     }
@@ -394,8 +414,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void downloadImageFuturo(View view){ downloadContent(Fragment_Futuro.IMAGE_FUTURO); }
     public void downloadImageTenis1(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
     public void downloadImageTenis2(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
+    public void downloadImageFavor(View view){ downloadContent(Fragment_Favor.IMAGE_FAVOR); }
+
     public void openSpotify(View view){
         Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/miguelromeral/playlist/7EGfF9n2rlHq0Ymh7d6QWM?si=uQussHsgRvihBVdKx3NksA"));
+        startActivity(myIntent);
+    }
+    public void openGitHub(View view){
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/miguelromeral/MemEsdacj"));
         startActivity(myIntent);
     }
     public void downloadImageAbout(View view){ downloadContent(Fragment_About.IMAGE_ABOUT); }
@@ -438,6 +464,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.messengerleague);
         startActivity(i);
     }
+
+
+
+    public void clickImageAbout(View view){actionImageClicks(Fragment_About.IMAGE_ABOUT);}
+    public void clickImageAzuqueca1(View view){actionImageClicks(Fragment_Azuqueca.IMAGE_AZUQUECA_1);}
+    public void clickImageAzuqueca2(View view){actionImageClicks(Fragment_Azuqueca.IMAGE_AZUQUECA_2);}
+    public void clickImageAzuqueca3(View view){actionImageClicks(Fragment_Azuqueca.IMAGE_AZUQUECA_3);}
+    public void clickImageDenisa1(View view){actionImageClicks(Fragment_Denisa.IMAGE_DENISA_1);}
+    public void clickImageDenisa2(View view){actionImageClicks(Fragment_Denisa.IMAGE_DENISA_2);}
+    public void clickImageBachillerato1(View view){actionImageClicks(Fragment_Bachillerato.IMAGE_BACHILLERATO_1);}
+    public void clickImageBachillerato2(View view){actionImageClicks(Fragment_Bachillerato.IMAGE_BACHILLERATO_2);}
+    public void clickImageBachillerato3(View view){actionImageClicks(Fragment_Bachillerato.IMAGE_BACHILLERATO_3);}
+    public void clickImageBachillerato4(View view){actionImageClicks(Fragment_Bachillerato.IMAGE_BACHILLERATO_4);}
+    public void clickImageBachillerato5(View view){actionImageClicks(Fragment_Bachillerato.IMAGE_BACHILLERATO_5);}
+    public void clickImageConcierto1(View view){actionImageClicks(Fragment_Concierto.IMAGE_CONCIERTO_1);}
+    public void clickImageConcierto2(View view){actionImageClicks(Fragment_Concierto.IMAGE_CONCIERTO_2);}
+    public void clickImageConociendote1(View view){actionImageClicks(Fragment_Conociendote.IMAGE_CONOCIENDOTE_1);}
+    public void clickImageConociendote2(View view){actionImageClicks(Fragment_Conociendote.IMAGE_CONOCIENDOTE_2);}
+    public void clickImageConociendote3(View view){actionImageClicks(Fragment_Conociendote.IMAGE_CONOCIENDOTE_3);}
+    public void clickImageConociendote4(View view){actionImageClicks(Fragment_Conociendote.IMAGE_CONOCIENDOTE_4);}
+    public void clickImageEso1(View view){actionImageClicks(Fragment_Eso.IMAGE_ESO_1);}
+    public void clickImageEso2(View view){actionImageClicks(Fragment_Eso.IMAGE_ESO_2);}
+    public void clickImageEso3(View view){actionImageClicks(Fragment_Eso.IMAGE_ESO_3);}
+    public void clickImageEso4(View view){actionImageClicks(Fragment_Eso.IMAGE_ESO_4);}
+    public void clickImageFavor(View view){actionImageClicks(Fragment_Favor.IMAGE_FAVOR);}
+    public void clickImageFuturo(View view){actionImageClicks(Fragment_Futuro.IMAGE_FUTURO);}
+    public void clickImageHockey1(View view){actionImageClicks(Fragment_Hockey.IMAGE_HOCKEY_1);}
+    public void clickImageHockey2(View view){actionImageClicks(Fragment_Hockey.IMAGE_HOCKEY_2);}
+    public void clickImageHome(View view){actionImageClicks(Fragment_Home.IMAGE_HOME);}
+    public void clickImageMessenger(View view){actionImageClicks(Fragment_Messenger.IMAGE_MESSENGER);}
+    public void clickImageTenis1(View view){actionImageClicks(Fragment_Tenis.IMAGE_TENIS_1);}
+    public void clickImageTenis2(View view){actionImageClicks(Fragment_Tenis.IMAGE_TENIS_2);}
 
 
     /************************ DOWNLOAD FILES ******************************/

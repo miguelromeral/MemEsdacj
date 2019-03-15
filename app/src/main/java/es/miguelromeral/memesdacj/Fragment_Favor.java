@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class Fragment_Favor extends Fragment {
 
+    public static final String IMAGE_FAVOR = "favor.jpg";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class Fragment_Favor extends Fragment {
 
         ((ImageView) getActivity().findViewById(R.id.iv_elcansi)).setImageDrawable(
                 ((MainActivity) getActivity()).resizeImage(R.drawable.elcansi));
+        ((ImageView) getActivity().findViewById(R.id.iv_favor)).setImageDrawable(
+                ((MainActivity) getActivity()).resizeImage(R.drawable.favor));
 
 
         Toast.makeText(getActivity().getApplicationContext(),
