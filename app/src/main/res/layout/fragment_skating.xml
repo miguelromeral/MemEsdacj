@@ -37,7 +37,7 @@
 
 
             <Button
-                android:id="@+id/bWatch_Skate1"
+                android:id="@+id/bWatch_Skate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -46,23 +46,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/side_nav_bar"
                 android:drawableLeft="@android:drawable/ic_media_play"
-                android:onClick="watchVideoSkate1"
-                android:text="@string/btWatch_video"
-                android:textAlignment="center"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/bWatch_Skate2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/side_nav_bar"
-                android:drawableLeft="@android:drawable/ic_media_play"
-                android:onClick="watchVideoSkate2"
+                android:onClick="watchVideoSkate"
                 android:text="@string/btWatch_video"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"

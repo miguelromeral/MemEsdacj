@@ -31,6 +31,7 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -86,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
+
+        //((ImageView) findViewById(R.id.img_header_bg)).setImageDrawable(resizeImage(R.drawable.favor));
+
+//        ((ImageView) findViewById(R.id.img_header_bg)).setImageResource(R.drawable.favor);
 
         if(new SimpleDateFormat("MM.dd").format(new Date()).equals("03.24")){
             new AlertDialog.Builder(this)
@@ -228,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 String url = UrlFinder.GetUrlVideo(imagenNueva);
                 if(!url.isEmpty()) {
-                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(imagenNueva));
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(myIntent);
 
                     imagenPulsada = 0;
@@ -430,14 +435,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.slender);
         startActivity(i);
     }
-    public void watchVideoSkate1(View view){
+    public void watchVideoSkate(View view){
         Intent i = new Intent(this, VideoActivity.class);
-        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate1);
-        startActivity(i);
-    }
-    public void watchVideoSkate2(View view){
-        Intent i = new Intent(this, VideoActivity.class);
-        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate2);
+        i.putExtra(VideoActivity.PARAM_VIDEO_FILE, R.raw.skate);
         startActivity(i);
     }
     public void watchVideoHarlemshake(View view){

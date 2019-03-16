@@ -5,30 +5,35 @@
     <string name="debug">DEBUG - TO DO</string>
 
 
-    <!-- Menú Inicio -->
+    <!-- ABOUT -->
+    <!-- AZUQUECA -->
+    <!-- BACHILLERATO -->
+    <!-- CONCIERTO -->
+    <!-- CONOCIENDOTE -->
+    <!-- DENISA -->
+    <!-- ESO -->
+    <!-- FAVOR -->
+    <!-- FUTURO -->
+    <!-- GITHUB -->
+    <string name="tVerGitHub">Ver código en GitHub</string>
+    <!-- HARLEM SHAKE -->
+    <!-- HOCKEY -->
+    <!-- HOME -->
     <string name="tInicio1">Introducción Esteban</string>
-
-    <!-- Menú Messenger -->
+    <!-- MESSENGER -->
     <string name="tMessenger1">Messenger League</string>
+    <!-- SKATING -->
+    <!-- SLENDER -->
+    <!-- SPOTIFY -->
+    <!-- TENIS -->
+    <!-- TOMAS FALSAS -->
 
-
-    <string name="tFelicitacionTitulo">Título de la felicitación</string>
-    <string name="tFelicitacionCuerpo">Cuerpo de la felicitación</string>
-
-
-
-
-
+    <!-- HOW TO -->
     <string name="tInstruccionesTitulo">Uso de la aplicación</string>
     <string name="tInstruccionesCuerpo">Instrucciones de la aplicación</string>
-
-
-    <string name="tKeepClicking">Sigue pulsando la imagen ;)</string>
-
-
-    <string name="tVerGitHub">Ver código en GitHub</string>
-
-
+    <!-- FELICITACION -->
+    <string name="tFelicitacionTitulo">Título de la felicitación</string>
+    <string name="tFelicitacionCuerpo">Cuerpo de la felicitación</string>
 
 
 
@@ -43,6 +48,7 @@
     <string name="wEspontaneo">ElCansi: ¡Espontáneooooooooo!</string>
     <string name="tOk">Vale</string>
     <string name="tUnderstood">Entendido</string>
+    <string name="tKeepClicking">Sigue pulsando la imagen ;)</string>
 
     <!-- Botones -->
     <string name="btDownload_image">Guardar imagen</string>
@@ -51,11 +57,8 @@
     <string name="btOpen_Spotify">Escuchar playlist</string>
     <string name="btOpen_GitHub">Ver el código en GitHub</string>
 
-
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
 
     <!-- Menú tres puntitos -->
     <string name="action_go_home">Volver al inicio</string>
