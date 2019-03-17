@@ -12,49 +12,45 @@
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_messenger" />
             <item
+                android:id="@+id/nav_eso"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_eso" />
+            <item
                 android:id="@+id/nav_hockey"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_hockey" />
-            <item
-                android:id="@+id/nav_concierto"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_concierto" />
-            <item
-                android:id="@+id/nav_slender"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_slender" />
-            <item
-                android:id="@+id/nav_skating"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_skating" />
             <item
                 android:id="@+id/nav_conociendote"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_conociendote" />
             <item
-                android:id="@+id/nav_harlemshake"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_harlemshake" />
-            <item
-                android:id="@+id/nav_futuro"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_futuro" />
-            <item
                 android:id="@+id/nav_tenis"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_tenis" />
+            <item
+                android:id="@+id/nav_slender"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_slender" />
+            <item
+                android:id="@+id/nav_concierto"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_concierto" />
+            <item
+                android:id="@+id/nav_bachillerato"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_bachillerato" />
+            <item
+                android:id="@+id/nav_harlemshake"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_harlemshake" />
             <item
                 android:id="@+id/nav_favor"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_favor" />
             <item
-                android:id="@+id/nav_eso"
+                android:id="@+id/nav_skating"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_eso" />
-            <item
-                android:id="@+id/nav_bachillerato"
-                android:icon="?android:attr/listChoiceIndicatorSingle"
-                android:title="@string/navigation_bachillerato" />
+                android:title="@string/navigation_skating" />
             <item
                 android:id="@+id/nav_azuqueca"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
@@ -63,6 +59,11 @@
                 android:id="@+id/nav_denisa"
                 android:icon="?android:attr/listChoiceIndicatorSingle"
                 android:title="@string/navigation_denisa" />
+            <item
+                android:id="@+id/nav_futuro"
+                android:icon="?android:attr/listChoiceIndicatorSingle"
+                android:title="@string/navigation_futuro" />
+
         </group>
 
 </menu>

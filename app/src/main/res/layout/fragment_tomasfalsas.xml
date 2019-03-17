@@ -17,22 +17,15 @@
             android:orientation="vertical"
             android:textAlignment="center">
 
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
             <TextView
+                android:text="@string/tTomasFalsas1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tMessenger1"
+                android:layout_margin="16dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
 
             <Button

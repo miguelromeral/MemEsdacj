@@ -18,19 +18,15 @@
             android:textAlignment="center">
 
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
             <TextView
+                android:text="@string/tFavor1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tMessenger1"
+                android:layout_margin="16dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
             <ImageView
                 android:id="@+id/iv_favor"
@@ -58,9 +54,16 @@
                 android:textStyle="bold" />
 
 
-            <Space
+
+            <TextView
+                android:text="@string/tFavor2"
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
 
             <Button
@@ -86,8 +89,24 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="2000dp"
+                    android:layout_height="10000dp"
                     tools:layout_editor_absoluteY="123dp" />
+
+                <TextView
+                    android:text="@string/tFavor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textIsSelectable="true" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10000dp"
+                    tools:layout_editor_absoluteY="123dp" />
+
 
                 <ImageView
                     android:id="@+id/iv_elcansi"
