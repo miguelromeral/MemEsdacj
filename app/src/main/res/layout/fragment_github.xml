@@ -18,9 +18,16 @@
             android:textAlignment="center">
 
 
-            <Space
+
+            <TextView
+                android:text="@string/tVerGitHub1"
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
             <Button
                 android:id="@+id/bOpenSGitHub"
@@ -38,13 +45,16 @@
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
 
+
             <TextView
+                android:text="@string/tVerGitHub2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tVerGitHub"
+                android:layout_margin="16dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
 
         </LinearLayout>

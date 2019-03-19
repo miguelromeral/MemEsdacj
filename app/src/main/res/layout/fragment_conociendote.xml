@@ -18,9 +18,17 @@
             android:textAlignment="center">
 
 
-            <Space
+
+            <TextView
+                android:text="@string/tConociendote1"
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
+
 
             <ImageView
                 android:id="@+id/iv_Conociendote1"
@@ -47,17 +55,16 @@
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
 
+
             <TextView
+                android:text="@string/tConociendote2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tMessenger1"
+                android:layout_margin="16dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
 
 
             <ImageView
@@ -86,6 +93,16 @@
                 android:textStyle="bold" />
 
 
+            <TextView
+                android:text="@string/tConociendote3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
+
             <ImageView
                 android:id="@+id/iv_Conociendote3"
                 android:layout_width="match_parent"
@@ -112,6 +129,16 @@
                 android:textStyle="bold" />
 
 
+            <TextView
+                android:text="@string/tConociendote4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
+
             <ImageView
                 android:id="@+id/iv_Conociendote4"
                 android:layout_width="match_parent"
@@ -136,6 +163,18 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
+
+
+            <TextView
+                android:text="@string/tConociendote5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textIsSelectable="true" />
+
 
         </LinearLayout>
     </ScrollView>
