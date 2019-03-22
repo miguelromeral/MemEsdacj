@@ -14,7 +14,7 @@ public class Fragment_Eso extends Fragment {
     public static final String IMAGE_ESO_1 = "eso1.jpg";
     public static final String IMAGE_ESO_2 = "eso2.jpg";
     public static final String IMAGE_ESO_3 = "eso3.jpg";
-    public static final String IMAGE_ESO_4 = "eso4.jpg";
+    public static final String IMAGE_ESO_4 = "eso4.png";
 
     @Nullable
     @Override

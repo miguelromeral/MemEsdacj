@@ -418,7 +418,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void downloadImageConociendote4(View view){ downloadContent(Fragment_Conociendote.IMAGE_CONOCIENDOTE_4); }
     public void downloadImageFuturo(View view){ downloadContent(Fragment_Futuro.IMAGE_FUTURO); }
     public void downloadImageTenis1(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
-    public void downloadImageTenis2(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_1); }
+    public void downloadImageTenis2(View view){ downloadContent(Fragment_Tenis.IMAGE_TENIS_2); }
     public void downloadImageFavor(View view){ downloadContent(Fragment_Favor.IMAGE_FAVOR); }
 
     public void openSpotify(View view){
