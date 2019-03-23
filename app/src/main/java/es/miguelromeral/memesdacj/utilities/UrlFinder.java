@@ -3,10 +3,17 @@ import es.miguelromeral.memesdacj.*;
 
 /**
  * Created by miguelangel.garciar on 15/03/2019.
+ *
+ * Clase que retorna un enlace específico a un meme por una imagen en concreto.
  */
 
 public class UrlFinder {
 
+    /**
+     * Retorna un enlace a Youtube en función de la imagen.
+     * @param imagen Nombre del fichero de la imagen.
+     * @return String con el enlace a YouTube.
+     */
     public static String GetUrlVideo(String imagen){
         switch(imagen){
             case Fragment_Azuqueca.IMAGE_AZUQUECA_1: // Abril / Cerral
@@ -29,8 +36,8 @@ public class UrlFinder {
                 return "https://www.youtube.com/watch?v=-eANTvS5XRA";
             case Fragment_Bachillerato.IMAGE_BACHILLERATO_4: // Crackovia - Se formo la coladera
                 return "https://www.youtube.com/watch?v=jXwtboIOiRI";
-            case Fragment_Bachillerato.IMAGE_BACHILLERATO_5:
-                return "https://www.youtube.com/watch?v=jofNR_WkoCE // What does the fox says";
+            case Fragment_Bachillerato.IMAGE_BACHILLERATO_5: // What does the fox says
+                return "https://www.youtube.com/watch?v=jofNR_WkoCE";
             case Fragment_Concierto.IMAGE_CONCIERTO_1: // Yisus chica
                 return "https://twitter.com/yisucrist/status/1089300705956020225";
             case Fragment_Concierto.IMAGE_CONCIERTO_2: // ANHQV - Felicidad

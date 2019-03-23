@@ -23,6 +23,8 @@ import android.widget.VideoView;
 
 /**
  * Created by miguelangel.garciar on 08/03/2019.
+ *
+ * Clase encontrada en StackOverflow para poder reproducir videos en pantalla completa.
  */
 
 public class VideoActivity extends AppCompatActivity {

@@ -87,6 +87,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <!-- Espacios puestos solo para molestar, para hacer que baje y encontrar al cansino. -->
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10000dp"

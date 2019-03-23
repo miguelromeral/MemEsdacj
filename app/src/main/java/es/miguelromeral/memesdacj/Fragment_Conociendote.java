@@ -11,11 +11,21 @@ import android.widget.ImageView;
 
 public class Fragment_Conociendote extends Fragment {
 
+    /**
+     * Nombre de las imágenes que este fragment muestra.
+     */
     public static final String IMAGE_CONOCIENDOTE_1 = "conociendonos1.jpg";
     public static final String IMAGE_CONOCIENDOTE_2 = "conociendonos2.jpg";
     public static final String IMAGE_CONOCIENDOTE_3 = "conociendonos3.jpg";
     public static final String IMAGE_CONOCIENDOTE_4 = "conociendonos4.jpg";
 
+    /**
+     * Creamos la vista sustituyendo el fragment actual por el nuevo. Además, cambiamos la Tittle Bar.
+     * @param inflater LayoutInflater
+     * @param container Contenedor de las vistas principal.
+     * @param savedInstanceState Datos de la aplicación.
+     * @return Nueva vista creada.
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +37,11 @@ public class Fragment_Conociendote extends Fragment {
     }
 
 
+    /**
+     * Cargamos las imágenes del fragment cuando se haya creado la vista (no antes).
+     * @param view Vista principal.
+     * @param savedInstanceState Datos de la instancia.
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

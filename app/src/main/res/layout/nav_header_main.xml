@@ -9,6 +9,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
+    <!-- Imagen de la cabecera del menú lateral. -->
     <ImageView
         android:id="@+id/img_header_bg"
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:src="@drawable/header"/>
 
 
+    <!-- Resto de contenido de la cabecera. -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
         android:padding="@dimen/activity_horizontal_margin">
 
 
+        <!-- Imagen de la App. -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
@@ -32,6 +35,7 @@
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
+        <!-- Datos sobre Esteban. -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

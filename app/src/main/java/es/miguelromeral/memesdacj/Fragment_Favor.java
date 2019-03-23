@@ -10,10 +10,23 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+/**
+ * Clase para crear el fragment Favor.
+ */
 public class Fragment_Favor extends Fragment {
 
+    /**
+     * Nombre de las imágenes que este fragment muestra.
+     */
     public static final String IMAGE_FAVOR = "favor.jpg";
 
+    /**
+     * Creamos la vista sustituyendo el fragment actual por el nuevo. Además, cambiamos la Tittle Bar.
+     * @param inflater LayoutInflater
+     * @param container Contenedor de las vistas principal.
+     * @param savedInstanceState Datos de la aplicación.
+     * @return Nueva vista creada.
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,6 +38,11 @@ public class Fragment_Favor extends Fragment {
     }
 
 
+    /**
+     * Cargamos las imágenes del fragment cuando se haya creado la vista (no antes).
+     * @param view Vista principal.
+     * @param savedInstanceState Datos de la instancia.
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

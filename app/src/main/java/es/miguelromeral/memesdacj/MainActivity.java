@@ -46,60 +46,96 @@ import es.miguelromeral.memesdacj.utilities.CheckForSDCard;
 import es.miguelromeral.memesdacj.utilities.UrlFinder;
 import pub.devrel.easypermissions.EasyPermissions;
 
+/**
+ * Clase que alberga toda la lógica de la aplicación.
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
     EasyPermissions.PermissionCallbacks {
 
-    private static final int WRITE_REQUEST_CODE = 300;
+    /**
+     * Tag para el log
+     */
     private static final String TAG = MainActivity.class.getSimpleName();
+    /**
+     * Nombre de las preferencias principales.
+     */
     private static final String PREFERENCES_MAIN = "Preferencias";
+    /**
+     * Nombre de las preferencias sobre si es la primera vez que se inicia la app.
+     */
     private static final String PREFERENCES_REANUDADO = "Preferencias_reanudado";
+    /**
+     * URL que le enviaremos al meme.
+     */
     private String url;
+    /**
+     * Drawer para albergar el menú lateral.
+     */
     private DrawerLayout drawer;
-    // Indica si es la primera vez que se ejecuta la aplicación
+    /**
+     * Indica si es la primera vez que se ejecuta la aplicación
+     */
     private boolean reanudado;
 
-
+    /**
+     * Veces que se ha pulsado la imagen seguida.
+     */
     private int imagenPulsada = 0;
-    private static int MAX_CLICKS = 6;
+    /**
+     * Número de clicks hasta que te lleva al meme.
+     */
+    private static int MAX_CLICKS = 5;
+    /**
+     * Número de clicks para que te avise de la redirección.
+     */
     private static int WARNING_CLICKS = 2;
+    /**
+     * Nombre de la imagen que se está pulsando.
+     */
     private String imagen;
 
+    /**
+     * Código para la creación de la actividad.
+     * @param savedInstanceState Datos de la app.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Ponemos la Toolbar arriba de la activity.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Informamos el menú lateral e indicamos que las acciones que tengan lugar
+        // en él las tratemos aquí.
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Ajustes para mostrar o no el panel lateral.
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Si no tenemos una instancia guardada en este momento, mostramos el menú principal.
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Fragment_Home()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-
-        //((ImageView) findViewById(R.id.img_header_bg)).setImageDrawable(resizeImage(R.drawable.favor));
-
-//        ((ImageView) findViewById(R.id.img_header_bg)).setImageResource(R.drawable.favor);
-
-        if(new SimpleDateFormat("MM.dd").format(new Date()).equals("03.24")){
+        // Mostramos una pequeña felicitación si se abre en día 24 de marzo.
+        if(new SimpleDateFormat("MM.dd").format(new Date()).equals("03.24")) {
             new AlertDialog.Builder(this)
                     .setCancelable(false)
+                    .setTitle(R.string.tFelicitacionTitulo)
                     .setPositiveButton(R.string.tOk, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                         }
                     })
-                    .setMessage(R.string.wBirthday)
+                    .setMessage(R.string.tFelicitacionCuerpo)
                     .show();
         }
 
@@ -111,26 +147,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             reanudado = false;
         }
 
-        // Si es la primera vez que se ejecuta
+        // Si es la primera vez que se ejecuta mostramos las instrucciones
         if(!reanudado){
-            mostrarFelicitacion();
             mostrarInstrucciones();
         }
     }
 
-    private void mostrarFelicitacion(){
-        new AlertDialog.Builder(this)
-                .setCancelable(false)
-                .setTitle(R.string.tFelicitacionTitulo)
-                .setPositiveButton(R.string.tUnderstood, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
-                })
-                .setMessage(R.string.tFelicitacionCuerpo)
-                .show();
-    }
-
-
+    /**
+     * Muestra un Alert Dialog con las instrucciones de la aplicación.
+     */
     private void mostrarInstrucciones(){
         new AlertDialog.Builder(this)
                 .setCancelable(false)
@@ -143,7 +168,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .show();
     }
 
-    // Cuando se pare la ejecución, guardamos las preferencias del main.
+    /**
+     * Cuando se pare la ejecución, guardamos las preferencias del main.
+     */
     @Override
     public void onStop(){
         super.onStop();
@@ -153,10 +180,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         editor.commit();
     }
 
+    /**
+     * Cambiamos el título de la barra superior.
+     * @param title Nuevo título.
+     */
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
 
+    /**
+     * Tratamos cada uno de los clicks en las opciones del menú lateral.
+     * @param item Ítem pulasdo.
+     * @return true.
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -226,7 +262,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
+    /**
+     * Comprueba que se hayan pulsado en muy poco tiempo las imágenes y, si se repite,
+     * se redirige hacia un meme concreto.
+     * @param imagenNueva Nombre de la imagen que se está pulsando.
+     */
     public void actionImageClicks(String imagenNueva){
         if(imagen == imagenNueva){
             if (imagenPulsada == MAX_CLICKS) {
@@ -257,7 +297,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
+    /**
+     * Mostramos el menú de los tres puntitos.
+     * @param menu Menú principal.
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -265,6 +309,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * Tratamos la acción cuanod se pulsa una opción.
+     * @param item Item del menú seleccionado.
+     * @return Opcion marcada
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -293,6 +342,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Tratamos el comportamiento al pulsar BACK (si está el menú, lo cerramos)
+     */
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -302,6 +354,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Ajusta una imagen a su ImageView
+     * @param options
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
 
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
@@ -343,7 +402,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
+    /**
+     * Convierte una imagen dado su ID de recurso en Drawable.
+     * @param imageResource ID del recurso.
+     * @return Drawable de la imagen.
+     */
     public Drawable resizeImage(int imageResource) {
         // R.drawable.large_image
         // Get device dimensions
@@ -512,7 +575,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             } else {
                 //If permission is not present request for the same.
-                EasyPermissions.requestPermissions(MainActivity.this, getString(R.string.wWritePermission), WRITE_REQUEST_CODE, Manifest.permission.READ_EXTERNAL_STORAGE);
+                EasyPermissions.requestPermissions(MainActivity.this, getString(R.string.wWritePermission), 300, Manifest.permission.READ_EXTERNAL_STORAGE);
             }
 
 

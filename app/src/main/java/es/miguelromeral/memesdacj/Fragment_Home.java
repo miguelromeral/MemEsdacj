@@ -9,10 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
+/**
+ * Clase para crear el fragment Home.
+ */
 public class Fragment_Home extends Fragment {
 
+    /**
+     * Nombre de las imágenes que este fragment muestra.
+     */
     public static final String IMAGE_HOME = "home.jpg";
 
+    /**
+     * Creamos la vista sustituyendo el fragment actual por el nuevo. Además, cambiamos la Tittle Bar.
+     * @param inflater LayoutInflater
+     * @param container Contenedor de las vistas principal.
+     * @param savedInstanceState Datos de la aplicación.
+     * @return Nueva vista creada.
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -22,6 +35,11 @@ public class Fragment_Home extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    /**
+     * Cargamos las imágenes del fragment cuando se haya creado la vista (no antes).
+     * @param view Vista principal.
+     * @param savedInstanceState Datos de la instancia.
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

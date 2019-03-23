@@ -6,11 +6,17 @@ package es.miguelromeral.memesdacj.utilities;
 
 import android.os.Environment;
 
+/**
+ * Clase que comprueba si la SD está disponible
+ */
 public class CheckForSDCard {
-    //Method to Check If SD Card is mounted or not
+
+    /**
+     * Comprueba que la SD está disponible
+     * @return true si se la SD está montada.
+     */
     public static boolean isSDCardPresent() {
         if (Environment.getExternalStorageState().equals(
-
                 Environment.MEDIA_MOUNTED)) {
             return true;
         }

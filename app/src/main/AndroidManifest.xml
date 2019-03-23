@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.miguelromeral.memesdacj">
 
+    <!-- La aplicación necesita permisos de Internet para poder enviar las actividades con memes en las imágenes -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- La aplicación necesita permisos de almacenamiento para guardar las imágenes de la misma -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -24,6 +26,7 @@
             </intent-filter>
         </activity>
 
+        <!-- Actividad específica para los vídeos -->
         <activity
             android:name=".VideoActivity"
             android:screenOrientation="landscape"
@@ -33,8 +36,4 @@
 
 
     </application>
-
-
-
-
 </manifest>
